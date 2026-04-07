@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 16px;
+}
+
+/* ── Card principal ───────────────────────────────── */
+.card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+/* ── Topo ─────────────────────────────────────────── */
+.topo {
+  margin-bottom: 28px;
+}
+
+.topo h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1e1e2e;
+  margin-bottom: 4px;
+}
+
+.topo p {
+  font-size: 13px;
+  color: #9e9eb5;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* ── Formulário ───────────────────────────────────── */
+.form-adicionar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#input-tarefa {
+  flex: 1;
+  padding: 13px 16px;
+  border: 2px solid #ebebf5;
+  border-radius: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1e1e2e;
+  outline: none;
+  transition: border-color 0.2s;
+  background: #fafafe;
+}
+
+#input-tarefa::placeholder {
+  color: #c0c0d8;
+}
+
+#input-tarefa:focus {
+  border-color: #667eea;
+  background: #fff;
+}
+
+#btn-adicionar {
+  padding: 13px 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+#btn-adicionar:hover  { opacity: 0.88; }
+#btn-adicionar:active { transform: scale(0.97); }
+
+/* ── Barra de progresso ───────────────────────────── */
+.barra-progresso {
+  margin-bottom: 20px;
+  display: none; /* aparece quando tem tarefas */
+}
+
+.barra-progresso.visivel {
+  display: block;
+}
+
+.progresso-fundo {
+  background: #ebebf5;
+  border-radius: 99px;
+  height: 7px;
+  margin-bottom: 6px;
+  overflow: hidden;
+}
+
+.progresso-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.4s ease;
+}
+
+#progresso-texto {
+  font-size: 12px;
+  color: #9e9eb5;
+  font-weight: 600;
+}
+
+/* ── Lista ────────────────────────────────────────── */
+#lista-tarefas {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Item ─────────────────────────────────────────── */
+.item-tarefa {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #fafafe;
+  border: 2px solid #ebebf5;
+  border-radius: 14px;
+  transition: border-color 0.2s, background 0.2s;
+  animation: slideIn 0.2s ease both;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.item-tarefa:hover {
+  border-color: #d0d0ea;
+  background: #f5f5fd;
+}
+
+/* ── Checkbox customizado ─────────────────────────── */
+.item-tarefa input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border: 2px solid #c0c0d8;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  position: relative;
+  background: #fff;
+}
+
+.item-tarefa input[type="checkbox"]:checked {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-color: transparent;
+}
+
+.item-tarefa input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border: 2.5px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+/* ── Texto da tarefa ──────────────────────────────── */
+.texto-tarefa {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e1e2e;
+  line-height: 1.4;
+  word-break: break-word;
+  transition: color 0.2s;
+}
+
+.item-tarefa.concluida .texto-tarefa {
+  color: #c0c0d8;
+  text-decoration: line-through;
+}
+
+/* ── Botão remover ────────────────────────────────── */
+.btn-remover {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #c0c0d8;
+  font-size: 16px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1;
+}
+
+.btn-remover:hover {
+  background: #fff0f0;
+  color: #e05252;
+}
+
+/* ── Mensagem vazia ───────────────────────────────── */
+.vazia {
+  text-align: center;
+  color: #c0c0d8;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 24px 0 4px;
+}
+
+.vazia.escondida {
+  display: none;
+}

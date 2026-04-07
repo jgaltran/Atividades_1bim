@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="card">
+    <div class="topo">
+      <h1>To-Do List</h1>
+      <p id="data-hoje"></p>
+    </div>
+
+    <div class="form-adicionar">
+      <input
+        type="text"
+        id="input-tarefa"
+        placeholder="Adicionar nova tarefa..."
+        maxlength="120"
+        autocomplete="off"
+      />
+      <button id="btn-adicionar">Adicionar</button>
+    </div>
+
+    <div class="barra-progresso" id="barra-wrap">
+      <div class="progresso-fundo">
+        <div class="progresso-fill" id="progresso-fill"></div>
+      </div>
+      <span id="progresso-texto">0 de 0 concluídas</span>
+    </div>
+
+    <ul id="lista-tarefas"></ul>
+
+    <p class="vazia" id="msg-vazia">Nenhuma tarefa ainda. Que tal começar? 🙂</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
