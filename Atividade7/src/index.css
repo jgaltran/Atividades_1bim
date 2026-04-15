@@ -1,0 +1,169 @@
+/* Reset do box-sizing */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Layout principal com CSS Grid */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 20px;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas:
+    "header header"
+    "main   aside"
+    "footer footer";
+  gap: 20px;
+}
+
+/* ── Header ── */
+header {
+  grid-area: header;
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+header h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1f3c88;
+}
+
+/* ── Nav ── */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  color: #444;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #1f3c88;
+  text-decoration: underline;
+}
+
+/* ── Main / Article ── */
+main {
+  grid-area: main;
+}
+
+article {
+  background-color: #ffffff;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+article h2 {
+  font-size: 2rem;
+  color: #2a5d9f;
+  margin-bottom: 20px;
+}
+
+article p {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* ── Figura ── */
+figure {
+  margin-top: 20px;
+}
+
+figure img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+figcaption {
+  margin-top: 8px;
+  font-size: 0.875rem;
+  color: #777;
+  text-align: center;
+}
+
+/* ── Aside ── */
+aside {
+  grid-area: aside;
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+aside h3 {
+  color: #1f3c88;
+  margin-bottom: 15px;
+}
+
+aside ul {
+  padding-left: 20px;
+}
+
+aside ul li {
+  margin-bottom: 10px;
+}
+
+aside ul li::marker {
+  color: #1f3c88;
+}
+
+aside ul li a {
+  text-decoration: none;
+  color: #444;
+  transition: 0.3s;
+}
+
+aside ul li a:hover {
+  color: #1f3c88;
+  text-decoration: underline;
+}
+
+/* ── Footer ── */
+footer {
+  grid-area: footer;
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* ── Responsivo ── */
+@media (max-width: 768px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "aside"
+      "footer";
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  article h2 {
+    font-size: 1.6rem;
+  }
+}
